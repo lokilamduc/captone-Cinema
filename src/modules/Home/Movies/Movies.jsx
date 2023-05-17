@@ -42,52 +42,88 @@ function Movies() {
   };
 
   return (
-    <Swiper
-      slidesPerView={4}
-      spaceBetween={30}
-      grid={{
-        rows: 2,
-        fill: "row",
-      }}
-      pagination={{
-        clickable: true,
-      }}
-      className={styles.mySwiper}
-    >
-      {movies.map((item) => (
-        <SwiperSlide key={item.maPhim} className={styles.movieDetails}>
-          <div>
-            <div className={styles.bannerImg}>
-              <img src={item.hinhAnh} />
-            </div>
-            <div>{item.tenPhim}</div>
-            <div>{item.moTa}</div>
-            <div style={{ display: "flex" }}>
-              <button onClick={() => navigate(`/movies/${item.maPhim}`)}>
-                Mua vé
-              </button>
-              <button onClick={() => handleOpenModal(item.trailer)}>
-                Xem trailer
-              </button>
-            </div>
-          </div>
-
-          <Modal show={isOpen} onHide={handleCloseModal}>
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body>
-              <ReactPlayer
-                url={trailer}
-                width="100%"
-                height="100%"
-                controls={true}
-                playing={isOpen}
-                onPause={handleCloseModal}
+    <div className={styles.wrapper}>
+      <Swiper
+        slidesPerView={4}
+        // spaceBetween={25}
+        grid={{
+          rows: 2,
+          fill: "row",
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        className={styles.mySwiper}
+      >
+        {movies.map((item) => (
+          <SwiperSlide key={item.maPhim} className={styles.movieDetails}>
+            <div>
+              <img
+                src={item.hinhAnh}
+                className={styles.bannerImg}
+                width="60%%"
+                height="auto"
               />
-            </Modal.Body>
-          </Modal>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+
+              <div className={styles.tenPhim}>{item.tenPhim}</div>
+              <div>
+                <p className={styles.fontSize}>
+                  {item.moTa.substring(0, 10)}...
+                </p>
+              </div>
+              <div className={styles.button}>
+                <button
+                  onClick={() => navigate(`/movies/${item.maPhim}`)}
+                  className={styles.buyTicket}
+                >
+                  Mua vé
+                </button>
+                <button onClick={() => handleOpenModal(item.trailer)}>
+                  Xem trailer
+                </button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div style={{ position: "relative" }}>
+        <Modal
+          show={isOpen}
+          onHide={handleCloseModal}
+          backdropOpacity={0.7}
+          style={{
+            position: "absolute",
+            top: "100%",
+            width: "50%",
+            height: "500px",
+            zIndex: "10",
+            marginLeft: "25%",
+            marginRight: "25%",
+            marginTop: "180px",
+          }}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body
+            style={{
+              height: "500px",
+            }}
+          >
+            <ReactPlayer
+              className={styles.reactPlayer}
+              url={trailer}
+              width="100%"
+              height="100%"
+              controls={true}
+              playing={isOpen}
+              onPause={handleCloseModal}
+            />
+          </Modal.Body>
+        </Modal>
+        <div
+          className={`${isOpen ? styles.backgroundBlur : styles.nonBlur}`}
+        ></div>
+      </div>
+    </div>
   );
 }
 
