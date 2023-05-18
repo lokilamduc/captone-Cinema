@@ -1,46 +1,61 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Sowtimes.module.scss";
+import styles from "./Showtimes.module.scss";
 import {
   apiGetHeThongRap,
   apiGetCumRap,
   apiGetLichChieuRap,
 } from "../../../apis/cinemaAPI";
-import { Tabs, Tab } from "react-bootstrap";
+import { Tabs } from "antd";
+import moment from "moment";
+import { Container } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function Showtimes() {
+  const { TabPane } = Tabs;
   const [heThongRap, setHeThongRap] = useState([]);
   const [cumRap, setCumRap] = useState([]);
-
+  const [tabIndex, setTabIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tabPosition, setTabPosition] = useState("left");
-
+  const [maHeThongRap, setMaHeThongRap] = useState("BHDStar");
   const getHeThongRap = async () => {
     try {
       const data = await apiGetHeThongRap();
-      console.log(data);
       setHeThongRap(data.content);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getCumRap = async () => {
+  // const getCumRap = async () => {
+  //   try {
+  //     const data = await apiGetCumRap();
+  //     setCumRap(data.content);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const getLichChieuRap = async () => {
     try {
-      const data = await apiGetCumRap();
-      console.log(data);
+      const data = await apiGetLichChieuRap(maHeThongRap);
+      console.log(data.content);
       setCumRap(data.content);
+      return data.content;
+      // return data;
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    getHeThongRap();
-  }, []);
+  // console.log(heThongRap);
 
   useEffect(() => {
-    getCumRap();
-  }, []);
+    getHeThongRap();
+    // getCumRap();
+    getLichChieuRap();
+  }, [maHeThongRap]);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -50,41 +65,118 @@ function Showtimes() {
     }
   }, [isModalOpen]);
 
-  const handleChangeTabPosition = (value, e) => {
-    setTabPosition(value);
-  };
-
+  // const handleChangeTabPosition = (value, e) => {
+  //   setTabPosition(value);
+  // };
+  // console.log(cumRap);
   return (
-    <div id="showtime">
-      <Tabs
-        defaultActiveKey="1"
-        id="tabs-with-dropdown"
-        position={tabPosition}
-        onSelect={(value, e) => handleChangeTabPosition(value, e)}
-      >
+    <div id="showtime" dir="left" className={styles.container}>
+      <Tabs tabPosition={tabPosition}>
         {heThongRap.map((heThong, index) => {
+          // console.log("he thong rap", heThong);
           return (
-            <Tab
+            <TabPane
               key={index}
-              eventKey={(index + 1).toString()}
-              title={<img src={heThong.logo} alt="" width={50} height={50} />}
+              tab={
+                <img
+                  style={{ height: "50px" }}
+                  src={heThong.logo}
+                  alt="logo"
+                  onClick={() => setMaHeThongRap(heThong.maHeThongRap)}
+                />
+              }
             >
-              <Tabs>
-                {cumRap.map((cum, subIndex) => {
+              <Tabs tabPosition={tabPosition}>
+                {cumRap[0]?.lstCumRap?.slice(0, 6).map((cumRap, subIndex) => {
+                  // console.log("lst cum rap", cumRap);
                   return (
-                    <Tab
+                    <TabPane
                       key={subIndex}
-                      eventKey={(index + 1).toString() + subIndex}
-                      title={
-                        <img src={cum.hinhAnh} alt="" width={50} height={50} />
+                      tab={
+                        <>
+                          <h1
+                            style={{
+                              fontSize: "large",
+                              textAlign: "justify",
+                              width: "500px",
+                            }}
+                          >
+                            {cumRap.tenCumRap}
+                          </h1>
+                          <p style={{ textAlign: "justify", width: "500px" }}>
+                            {cumRap.diaChi}
+                          </p>
+                        </>
                       }
                     >
-                      {cum.tenCumRap}
-                    </Tab>
+                      <Tabs
+                        tabPosition={tabPosition}
+                        className={styles.cinemaTabPanel}
+                      >
+                        {cumRap?.danhSachPhim.map((phim, index) => {
+                          // console.log("phim", phim);
+                          return (
+                            <TabPane
+                              key={index}
+                              tab={
+                                <div className={styles.movie}>
+                                  <div>
+                                    <img
+                                      src={phim.hinhAnh}
+                                      style={{
+                                        width: "100px",
+                                        height: "150px",
+                                      }}
+                                      alt={phim.hinhAnh}
+                                    />
+                                  </div>
+                                  <div style={{ marginLeft: "10px" }}>
+                                    <p
+                                      style={{
+                                        fontSize: "large",
+                                        textAlign: "justify",
+                                        fontWeight: "700",
+                                        textTransform: "capitalize",
+                                      }}
+                                    >
+                                      {phim.tenPhim}
+                                    </p>
+                                    <div>
+                                      <Row>
+                                        {phim?.lstLichChieuTheoPhim
+                                          .slice(0, 9)
+                                          ?.map((lich, index) => {
+                                            return (
+                                              <Col>
+                                                <p
+                                                  key={index}
+                                                  style={{
+                                                    textAlign: "justify",
+                                                  }}
+                                                >
+                                                  {moment(
+                                                    lich.ngayChieuGioChieu
+                                                  ).format(
+                                                    "dd-mm-yyyy ~ hh:mm A"
+                                                  )}
+                                                </p>
+                                              </Col>
+                                            );
+                                          })}
+                                      </Row>
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                            ></TabPane>
+                          );
+                        })}
+                      </Tabs>
+                    </TabPane>
                   );
                 })}
               </Tabs>
-            </Tab>
+            </TabPane>
           );
         })}
       </Tabs>

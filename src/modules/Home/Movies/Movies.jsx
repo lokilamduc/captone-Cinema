@@ -55,7 +55,7 @@ function Movies() {
         }}
         className={styles.mySwiper}
       >
-        {movies.map((item) => (
+        {movies?.map((item) => (
           <SwiperSlide key={item.maPhim} className={styles.movieDetails}>
             <div>
               <img

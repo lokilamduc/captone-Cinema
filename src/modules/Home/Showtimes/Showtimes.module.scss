@@ -1,0 +1,27 @@
+.cinemaTabPanel {
+    overflow-y: scroll;
+    width: "540px";
+    flex-grow: 1;
+    border-left: none;
+    border: 1px solid gray;
+   
+}
+    .container{
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+
+    .movie{
+        display: flex;
+        position: relative;
+
+    & ::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 80%;
+      height: 1px;
+      bottom: 0;
+      background: rgba(238,238,238,.88),
+        }}

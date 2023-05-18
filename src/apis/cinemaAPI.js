@@ -19,7 +19,7 @@ export const apiGetCumRap = async (cinemaID) => {
 
 export const apiGetLichChieuRap = async (cinemaID) => {
   const { data } = await axiosClient.get(
-    "/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01",
+    "/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP14",
     {
       params: {
         maHeThongRap: cinemaID,
