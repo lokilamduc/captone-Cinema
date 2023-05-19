@@ -65,7 +65,9 @@ function Movies() {
                 height="auto"
               />
 
-              <div className={styles.tenPhim}>{item.tenPhim}</div>
+              <div className={styles.tenPhim}>
+                {item.tenPhim.substring(0, 20)}
+              </div>
               <div>
                 <p className={styles.fontSize}>
                   {item.moTa.substring(0, 10)}...
@@ -92,17 +94,17 @@ function Movies() {
           onHide={handleCloseModal}
           backdropOpacity={0.7}
           style={{
-            position: "absolute",
-            top: "100%",
-            width: "50%",
-            height: "650px",
-            zIndex: "10",
-            marginLeft: "25%",
-            marginRight: "25%",
-            marginTop: "180px",
+            position: "absolute !important",
+            top: "100% !important",
+            width: "50% !important",
+            height: "650px !important",
+            zIndex: "10 !important",
+            marginLeft: "25% !important",
+            marginRight: "25% !important",
+            marginTop: "180px !important",
           }}
         >
-          <Modal.Header closeButton></Modal.Header>
+          <Modal.Header closeButton style={{ padding: "10px" }}></Modal.Header>
           <Modal.Body
             style={{
               height: "500px",

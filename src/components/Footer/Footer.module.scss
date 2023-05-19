@@ -1,16 +1,58 @@
-.footer{
-    
-    position: relative;
-    margin-bottom: 20px;
+.footer {
 
-& ::after {
-  content: "";
-  position: absolute;
-  width: 80%;
-  height: 1px;
-  bottom: 0;
-  background: rgba(238,238,238,.88);
-  
-  
+  position: relative;
+  margin-bottom: 20px;
+
+  & ::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    bottom: 0;
+    background: rgba(238, 238, 238, .88);
+
+
+  }
+}
+
+.ungdung {
+  background: url(../../../public/img/backapp.b46ef3a1.jpg);
+  background-size: contain;
+  padding: 120px 0 80px 0;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.app {
+    background-color: #f37335;
+    color: #fff;
+    font-weight: 700;
+    margin: 10px 0 10px 0;
+    &:hover {
+      background-color: #9e3c0c;
+      color: #fff;
+      // border: 1px solid #9e3c0c;
     }
+  }
+}
+
+.container{
+  max-width: 1000px;
+  margin: 0 20% 0 20%;
+}
+.appFooter{
+  height: 300px;
+  width: 100px;
+  box-sizing: border-box;
+  object-fit: cover;
 }
