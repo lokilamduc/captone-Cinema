@@ -42,7 +42,7 @@ function Movies() {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id="phim">
       <Swiper
         slidesPerView={4}
         // spaceBetween={25}
@@ -95,7 +95,7 @@ function Movies() {
             position: "absolute",
             top: "100%",
             width: "50%",
-            height: "500px",
+            height: "650px",
             zIndex: "10",
             marginLeft: "25%",
             marginRight: "25%",
@@ -115,7 +115,7 @@ function Movies() {
               height="100%"
               controls={true}
               playing={isOpen}
-              onPause={handleCloseModal}
+              // onPause={handleCloseModal}
             />
           </Modal.Body>
         </Modal>

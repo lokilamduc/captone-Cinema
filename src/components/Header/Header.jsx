@@ -31,10 +31,10 @@ function Header() {
         <a href="#showtime">
           <h4>Cụm Rạp</h4>
         </a>
-        <a href="#">
-          <h4>Tin Tức</h4>
+        <a href="#phim">
+          <h4>Phim Hot</h4>
         </a>
-        <a href="#">
+        <a href="#footer">
           <h4>Ứng Dụng</h4>
         </a>
       </div>

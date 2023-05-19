@@ -76,6 +76,7 @@ function Showtimes() {
           // console.log("he thong rap", heThong);
           return (
             <TabPane
+              style={{ height: "580px" }}
               key={index}
               tab={
                 <img
@@ -91,6 +92,7 @@ function Showtimes() {
                   // console.log("lst cum rap", cumRap);
                   return (
                     <TabPane
+                      className={styles.cinemaTabPanel}
                       key={subIndex}
                       tab={
                         <>
@@ -109,69 +111,59 @@ function Showtimes() {
                         </>
                       }
                     >
-                      <Tabs
-                        tabPosition={tabPosition}
-                        className={styles.cinemaTabPanel}
-                      >
-                        {cumRap?.danhSachPhim.map((phim, index) => {
-                          // console.log("phim", phim);
-                          return (
-                            <TabPane
-                              key={index}
-                              tab={
-                                <div className={styles.movie}>
-                                  <div>
-                                    <img
-                                      src={phim.hinhAnh}
-                                      style={{
-                                        width: "100px",
-                                        height: "150px",
-                                      }}
-                                      alt={phim.hinhAnh}
-                                    />
-                                  </div>
-                                  <div style={{ marginLeft: "10px" }}>
-                                    <p
-                                      style={{
-                                        fontSize: "large",
-                                        textAlign: "justify",
-                                        fontWeight: "700",
-                                        textTransform: "capitalize",
-                                      }}
-                                    >
-                                      {phim.tenPhim}
-                                    </p>
-                                    <div>
-                                      <Row>
-                                        {phim?.lstLichChieuTheoPhim
-                                          .slice(0, 9)
-                                          ?.map((lich, index) => {
-                                            return (
-                                              <Col>
-                                                <p
-                                                  key={index}
-                                                  style={{
-                                                    textAlign: "justify",
-                                                  }}
-                                                >
-                                                  {moment(
-                                                    lich.ngayChieuGioChieu
-                                                  ).format(
-                                                    "dd-mm-yyyy ~ hh:mm A"
-                                                  )}
-                                                </p>
-                                              </Col>
-                                            );
-                                          })}
-                                      </Row>
-                                    </div>
-                                  </div>
-                                </div>
-                              }
-                            ></TabPane>
-                          );
-                        })}
-                      </Tabs>
+                      {cumRap?.danhSachPhim.map((phim, index) => {
+                        // console.log("phim", phim);
+                        return (
+                          <div className={styles.movie}>
+                            <div>
+                              <img
+                                src={phim.hinhAnh}
+                                style={{
+                                  width: "100px",
+                                  height: "150px",
+                                }}
+                                alt="img"
+                              />
+                            </div>
+                            <div style={{ marginLeft: "10px" }}>
+                              <p
+                                style={{
+                                  fontSize: "large",
+                                  textAlign: "justify",
+                                  fontWeight: "700",
+                                  textTransform: "capitalize",
+                                }}
+                              >
+                                {phim.tenPhim}
+                              </p>
+                              <div>
+                                <Container style={{ width: "345px" }}>
+                                  <Row>
+                                    {phim?.lstLichChieuTheoPhim
+                                      .slice(0, 4)
+                                      ?.map((lich, index) => {
+                                        return (
+                                          <Col xs={6} md={6}>
+                                            <p
+                                              key={index}
+                                              style={{
+                                                textAlign: "justify",
+                                              }}
+                                            >
+                                              {moment(
+                                                lich.ngayChieuGioChieu
+                                              ).format("dd-mm ~ hh:mm A")}
+                                            </p>
+                                          </Col>
+                                        );
+                                      })}
+                                  </Row>
+                                </Container>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </TabPane>
                   );
                 })}
