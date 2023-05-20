@@ -1,54 +1,50 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import MainLayout from "./layouts/MainLayouts/MainLayout";
+import MainLayout from "./layouts/MainLayout/MainLayout";
 import AuthLayout from "./layouts/AuthLayout/AuthLayout";
-import ProtectedRoutes from "./routes/ProtectedRoutes";
-// import MovieManagement from "./modules/MovieManagement/MovieManagement";
-import AdminLayout from "./layouts/AdminLayout/AdminLayout";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
+import AdminLayout from "./layouts/AdminLayout/AdminLayout";
+import MovieManagement from "./modules/MovieManagement/MovieManagement";
+
 
 // import Home from "./modules/Home/Home";
-// import MovieDeatails from "./modules/MovieDetails/MovieDeatails";
+// import MovieDetails from "./modules/MovieDetails/MovieDetails";
 // import Signin from "./modules/Auth/Signin/Signin";
 // import Signup from "./modules/Auth/Signup/Signup";
 // import Booking from "./modules/Booking/Booking";
 
 const Home = lazy(() => import("./modules/Home/Home"));
-const MovieDeatails = lazy(() =>
-  import("./modules/MovieDetails/MovieDeatails")
-);
+const MovieDetails = lazy(() => import("./modules/MovieDetails/MovieDetails"));
 const Booking = lazy(() => import("./modules/Booking/Booking"));
 const Signin = lazy(() => import("./modules/Auth/Signin/Signin"));
 const Signup = lazy(() => import("./modules/Auth/Signup/Signup"));
-const MovieManagement = lazy(() =>
-  import("./modules/MovieManagement/MovieManagement")
-);
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/movies/:movieId" element={<MovieDeatails />} />
-            <Route
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route
               path="/booking/:bookingId"
               element={
-                <ProtectedRoutes>
+                <ProtectedRoute>
                   <Booking />
-                </ProtectedRoutes>
+                </ProtectedRoute>
               }
             />
-          </Route>
+        </Route>
 
-          <Route path="/" element={<AuthLayout />}>
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/signup" element={<Signup />} />
-          </Route>
+        <Route path="/" element={<AuthLayout />}>
+          <Route path="/signin" element={<Signin/>} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
 
-          <Route
+        <Route
             path="/admin"
             element={
               <AdminRoute>
@@ -57,11 +53,12 @@ function App() {
             }
           >
             <Route path="movies" element={<MovieManagement />} />
-            {/* <Route path="users" element={<UserManagement />} />
-            <Route path="tickets" element={<TicketsManagement />} /> */}
+            {/* <Route path="users" element={<UserManagement />} /> */}
+            {/* <Route path="tickets" element={<TicketsManagement />} /> */}
           </Route>
-        </Routes>
-      </BrowserRouter>
+
+      </Routes>
+    </BrowserRouter>
     </Suspense>
   );
 }

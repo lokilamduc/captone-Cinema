@@ -1,6 +1,7 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { apiCreateMovie } from "../../../apis/movieAPI";
+import React from 'react'
+import { useForm } from 'react-hook-form';
+import { apiCreateMovie } from '../../../apis/movieAPI';
+
 
 function MovieForm() {
   const { register, handleSubmit } = useForm({
@@ -17,7 +18,9 @@ function MovieForm() {
   const onSubmit = async (values) => {
     // const ngayKhoiChieu = dayjs(values.ngayKhoiChieu).format("DD/MM/YYYY")
     const payload = { ...values, hinhAnh: values.hinhAnh[0] };
+
     console.log(payload);
+
     try {
       await apiCreateMovie(payload);
     } catch (error) {
@@ -46,7 +49,11 @@ function MovieForm() {
           <input type="file" placeholder="Hình Ảnh" {...register("hinhAnh")} />
         </div>
         <div>
-          <input placeholder="Ngày khởi chiếu" {...register("ngayKhoiChieu")} />
+          <input
+            type="date"
+            placeholder="Ngày Khởi Chiếu"
+            {...register("ngayKhoiChieu")}
+          />
         </div>
         <button>Thêm Phim</button>
       </form>
@@ -54,4 +61,4 @@ function MovieForm() {
   );
 }
 
-export default MovieForm;
+export default MovieForm

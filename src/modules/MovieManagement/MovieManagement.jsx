@@ -1,6 +1,6 @@
-import React from "react";
-import MovieList from "./MovieList/MovieList";
-import MovieForm from "./MovieForm/MovieForm";
+import React from 'react'
+import MovieList from './MovieList/MovieList';
+import MovieForm from './MovieForm/MovieForm';
 
 function MovieManagement() {
   return (
@@ -12,4 +12,4 @@ function MovieManagement() {
   );
 }
 
-export default MovieManagement;
+export default MovieManagement

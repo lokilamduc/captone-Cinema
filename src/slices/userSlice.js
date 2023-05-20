@@ -5,7 +5,7 @@ import { apiSignin } from "../apis/userAPI";
 export const signin = createAsyncThunk("user/signin", async (values) => {
   try {
     const data = await apiSignin(values);
-    //lưu thông tin user vào localStorage de603 giữ trạng thái đăng nhập
+    // Lưu thông tin user vào localStorage để giữ trạng thái đăng nhập
     localStorage.setItem("user", JSON.stringify(data.content));
 
     return data.content;
@@ -15,7 +15,7 @@ export const signin = createAsyncThunk("user/signin", async (values) => {
 });
 
 const initialState = {
-  //đồng bộ thông tin từ localStorage vào state của redux
+  // Đồng bộ thông tin user từ localStorage vào state của redux
   user: JSON.parse(localStorage.getItem("user")) || null,
   isLoading: false,
   error: null,
@@ -45,3 +45,4 @@ const userSlice = createSlice({
 export const { signout } = userSlice.actions;
 
 export default userSlice.reducer;
+
