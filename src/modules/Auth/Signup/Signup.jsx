@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import styles from "./SignUp.module.scss";
 import { useForm } from "react-hook-form";
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import userAPI from '../../../slices/userSlice'
-import swal from 'sweetalert2';
-
+import userAPI from "../../../slices/userSlice";
+import swal from "sweetalert";
 
 function Signup() {
   const [successRegister, seSuccessRegister] = useState(false);
@@ -26,20 +25,19 @@ function Signup() {
   const { errors } = formState;
 
   const onSubmit = async (value) => {
-    const {nhapLaiMK: _, ...payload} = value;
+    const { nhapLaiMK: _, ...payload } = value;
     try {
       await userAPI.apiSignup(payload);
       seSuccessRegister(true);
       swal("Đăng kí thành công", "", "success");
-
     } catch (error) {
       swal("Đăng kí thất bại", "", "error");
-      console.log(error)
+      console.log(error);
     }
   };
 
-  if(successRegister){
-    return <Navigate to="/signIn" replace />
+  if (successRegister) {
+    return <Navigate to="/signIn" replace />;
   }
 
   return (
@@ -107,8 +105,9 @@ function Signup() {
                   value: true,
                   message: "Nhập lại mật khẩu không được để trống!",
                 },
-                validate: (val) => val === watch("matKhau") || "Mật khẩu không trùng khớp",
-                })}
+                validate: (val) =>
+                  val === watch("matKhau") || "Mật khẩu không trùng khớp",
+              })}
             />
             {errors.nhapLaiMK && (
               <p className={styles.txtError}>{errors.nhapLaiMK.message}</p>
@@ -170,7 +169,7 @@ function Signup() {
         </form>
         <div className={styles.linkSignUp}>
           <p>
-            Đã có tài khoản 
+            Đã có tài khoản
             <span>
               <Link to="/SignIn">Đăng nhập ngay</Link>
             </span>
@@ -180,6 +179,6 @@ function Signup() {
       </div>
     </div>
   );
-};
+}
 
-export default Signup
+export default Signup;

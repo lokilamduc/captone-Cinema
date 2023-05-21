@@ -1,5 +1,10 @@
 import axiosClient from "./axiosClient";
 
+export const apiGetHeThongRap = async () => {
+  const { data } = await axiosClient.get("/QuanLyRap/LayThongTinHeThongRap");
+  return data;
+};
+
 const theaterAPI = {
   getTheaterSystem: () => {
     return axiosClient.get("QuanLyRap/LayThongTinHeThongRap");

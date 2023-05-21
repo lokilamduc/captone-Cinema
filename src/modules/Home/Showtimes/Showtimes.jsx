@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Showtimes.module.scss";
-import {
-  apiGetMovies,
-} from "../../../apis/movieAPI";
+import { apiGetMovies } from "../../../apis/movieAPI";
 import { Tabs } from "antd";
 import moment from "moment";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MovieItem from "./MovieItem/MovieItem";
+import ReactPaginate from "react-paginate";
 
 function Showtimes() {
   const [movies, setMovies] = useState([]);
@@ -28,7 +27,7 @@ function Showtimes() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await apiGetMovies()
+        const data = await apiGetMovies();
       } catch (error) {
         console.log(error);
       }
@@ -39,26 +38,25 @@ function Showtimes() {
     <div className={styles.wrapShowing} id="Showing">
       <div className="container">
         <div className={styles.showing}>
-        <MovieItem currentItems={currentItems} />
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="<"
-          renderOnZeroPageCount={null}
-          containerClassName={styles.pagination}
-          pageLinkClassName={styles.page__num}
-          previousLinkClassName={styles.page__num}
-          nextLinkClassName={styles.page__num}
-          activeLinkClassName={styles.paginate__active}
-        />
+          <MovieItem currentItems={currentItems} />
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            containerClassName={styles.pagination}
+            pageLinkClassName={styles.page__num}
+            previousLinkClassName={styles.page__num}
+            nextLinkClassName={styles.page__num}
+            activeLinkClassName={styles.paginate__active}
+          />
         </div>
       </div>
     </div>
   );
-};
-
+}
 
 export default Showtimes;
