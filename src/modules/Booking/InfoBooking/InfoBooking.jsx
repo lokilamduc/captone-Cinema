@@ -5,7 +5,7 @@ import Loading from '../../../components/Loading/Loading';
 import bookingMovieAPI from '../../../apis/bookingMovieAPI';
 import { calcTotal, reloadBooking } from '../../../slices/bookingMovieSlice';
 import styles from './InfoBooking.module.scss'
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 
 function InfoBooking({maLichChieu}) {
