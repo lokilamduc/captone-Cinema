@@ -69,28 +69,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-### thư viện
-
+### Thư viện
 - Routing: react-router-dom
 - Redux: @reduxjs/toolkit, react-redux
-- Form: react-hook-form hoặc formik
+- Form: react-hook-form hoặc formik npm i react-hook-form
 - API: axios
-- Styles: sass
 - UI: react-bootstrap, material-ui,...
+- Styles: sass npm i -D sass 
+test react player để hiện trailer npm i react-player
+
+npm i react-router-dom axios @reduxjs/toolkit react-redux
 
 ### Cấu trúc project
 
 - src/
-
   - components/
-
     - Chứa các presentational component (Các component thuần về giao diện có thể tái sử dụng ở nhiều nơi trong ứng dụng). VD: Button, Sidebar, Header,...
     - Các components này thường sẽ chỉ có local state và nhận vào props để hiển thị giao diện, thường không chứa logic nghiệp vụ của ứng dụng (call API)
 
-  - modules/
-    - Chứa các components đại diện cho 1 chức năng/trang cụ thể trong ứng dụng
-    - Các components này thường sẽ có chứa logic nghiệp vụ của ứng dụng (call API, redux,...)
+  - modules/containers/feature
+  <!-- hoan thanh chuc nang gi do , cd chi tiet phim , dat ve ket noi  -->
+      - Chứa các components đại diện cho 1 chức năng/trang cụ thể trong ứng dụng
+    - Các components này thường sẽ có chứa logic nghiệp vụ của ứng dụng (call API, redux,...) hom detail đặt vé
 
--apis/
--Chứa phần setup các phương thức gọi API (axios)
--Chứa các hàm gọi API

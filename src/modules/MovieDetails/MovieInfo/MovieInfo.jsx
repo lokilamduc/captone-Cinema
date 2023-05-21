@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { apiGetMovieDetails } from "../../../apis/movieAPI";
+import React, { useEffect, useState } from 'react'
+import { apiGetMovieDetails } from '../../../apis/movieAPI';
 
-function MovieInfor({ movieId }) {
-  const [movie, setMovie] = useState({});
+function MovieInfo({ movieId }) {
+  const [movie, setMovie] = useState({})
+
   const getMovieDetails = async () => {
     try {
       const data = await apiGetMovieDetails(movieId);
@@ -15,12 +16,13 @@ function MovieInfor({ movieId }) {
   useEffect(() => {
     getMovieDetails();
   }, []);
+
   return (
     <div>
       <h1>MovieInfo</h1>
       <h3>{movie.tenPhim}</h3>
     </div>
-  );
+  )
 }
 
-export default MovieInfor;
+export default MovieInfo

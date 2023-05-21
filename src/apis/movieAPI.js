@@ -6,7 +6,6 @@ export const apiGetMovies = async () => {
       maNhom: "GP14",
     },
   });
-
   return data;
 };
 
@@ -31,5 +30,6 @@ export const apiCreateMovie = async (movie) => {
     formData.append(key, movie[key]);
   }
   formData.append("maNhom", "GP14");
-  await axiosClient.post("/QuanLyPhim/ThemPhimUploadHinh", movie);
+
+  await axiosClient.post("/QuanLyPhim/ThemPhimUploadHinh", formData);
 };

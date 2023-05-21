@@ -70,109 +70,111 @@ function Showtimes() {
   // };
   // console.log(cumRap);
   return (
-    <div id="showtime" dir="left" className={styles.container}>
-      <Tabs tabPosition={tabPosition}>
-        {heThongRap.map((heThong, index) => {
-          // console.log("he thong rap", heThong);
-          return (
-            <TabPane
-              style={{ height: "580px" }}
-              key={index}
-              tab={
-                <img
-                  style={{ height: "50px" }}
-                  src={heThong.logo}
-                  alt="logo"
-                  onClick={() => setMaHeThongRap(heThong.maHeThongRap)}
-                />
-              }
-            >
-              <Tabs tabPosition={tabPosition}>
-                {cumRap[0]?.lstCumRap?.slice(0, 6).map((cumRap, subIndex) => {
-                  // console.log("lst cum rap", cumRap);
-                  return (
-                    <TabPane
-                      className={styles.cinemaTabPanel}
-                      key={subIndex}
-                      tab={
-                        <>
-                          <h1
-                            style={{
-                              fontSize: "large",
-                              textAlign: "justify",
-                              width: "500px",
-                            }}
-                          >
-                            {cumRap.tenCumRap}
-                          </h1>
-                          <p style={{ textAlign: "justify", width: "500px" }}>
-                            {cumRap.diaChi}
-                          </p>
-                        </>
-                      }
-                    >
-                      {cumRap?.danhSachPhim.map((phim, index) => {
-                        // console.log("phim", phim);
-                        return (
-                          <div className={styles.movie}>
-                            <div>
-                              <img
-                                src={phim.hinhAnh}
-                                style={{
-                                  width: "100px",
-                                  height: "150px",
-                                }}
-                                alt="img"
-                              />
-                            </div>
-                            <div style={{ marginLeft: "10px" }}>
-                              <p
-                                style={{
-                                  fontSize: "large",
-                                  textAlign: "justify",
-                                  fontWeight: "700",
-                                  textTransform: "capitalize",
-                                }}
-                              >
-                                {phim.tenPhim}
-                              </p>
+    <>
+      <div id="showtime" dir="left" className={styles.container}>
+        <Tabs tabPosition={tabPosition}>
+          {heThongRap.map((heThong, index) => {
+            // console.log("he thong rap", heThong);
+            return (
+              <TabPane
+                style={{ height: "580px" }}
+                key={index}
+                tab={
+                  <img
+                    style={{ height: "50px" }}
+                    src={heThong.logo}
+                    alt="logo"
+                    onClick={() => setMaHeThongRap(heThong.maHeThongRap)}
+                  />
+                }
+              >
+                <Tabs tabPosition={tabPosition}>
+                  {cumRap[0]?.lstCumRap?.slice(0, 6).map((cumRap, subIndex) => {
+                    // console.log("lst cum rap", cumRap);
+                    return (
+                      <TabPane
+                        className={styles.cinemaTabPanel}
+                        key={subIndex}
+                        tab={
+                          <>
+                            <h1
+                              style={{
+                                fontSize: "large",
+                                textAlign: "justify",
+                                width: "500px",
+                              }}
+                            >
+                              {cumRap.tenCumRap}
+                            </h1>
+                            <p style={{ textAlign: "justify", width: "500px" }}>
+                              {cumRap.diaChi}
+                            </p>
+                          </>
+                        }
+                      >
+                        {cumRap?.danhSachPhim.map((phim, index) => {
+                          // console.log("phim", phim);
+                          return (
+                            <div className={styles.movie}>
                               <div>
-                                <Container style={{ width: "345px" }}>
-                                  <Row>
-                                    {phim?.lstLichChieuTheoPhim
-                                      .slice(0, 4)
-                                      ?.map((lich, index) => {
-                                        return (
-                                          <Col xs={6} md={6}>
-                                            <p
-                                              key={index}
-                                              style={{
-                                                textAlign: "justify",
-                                              }}
-                                            >
-                                              {moment(
-                                                lich.ngayChieuGioChieu
-                                              ).format("dd-mm ~ hh:mm A")}
-                                            </p>
-                                          </Col>
-                                        );
-                                      })}
-                                  </Row>
-                                </Container>
+                                <img
+                                  src={phim.hinhAnh}
+                                  style={{
+                                    width: "100px",
+                                    height: "150px",
+                                  }}
+                                  alt="img"
+                                />
+                              </div>
+                              <div style={{ marginLeft: "10px" }}>
+                                <p
+                                  style={{
+                                    fontSize: "large",
+                                    textAlign: "justify",
+                                    fontWeight: "700",
+                                    textTransform: "capitalize",
+                                  }}
+                                >
+                                  {phim.tenPhim}
+                                </p>
+                                <div>
+                                  <Container style={{ width: "345px" }}>
+                                    <Row>
+                                      {phim?.lstLichChieuTheoPhim
+                                        .slice(0, 4)
+                                        ?.map((lich, index) => {
+                                          return (
+                                            <Col xs={6} md={6}>
+                                              <p
+                                                key={index}
+                                                style={{
+                                                  textAlign: "justify",
+                                                }}
+                                              >
+                                                {moment(
+                                                  lich.ngayChieuGioChieu
+                                                ).format("dd-mm ~ hh:mm A")}
+                                              </p>
+                                            </Col>
+                                          );
+                                        })}
+                                    </Row>
+                                  </Container>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                    </TabPane>
-                  );
-                })}
-              </Tabs>
-            </TabPane>
-          );
-        })}
-      </Tabs>
-    </div>
+                          );
+                        })}
+                      </TabPane>
+                    );
+                  })}
+                </Tabs>
+              </TabPane>
+            );
+          })}
+        </Tabs>
+      </div>
+    </>
   );
 }
 

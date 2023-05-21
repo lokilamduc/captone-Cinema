@@ -73,32 +73,71 @@ function Footer() {
               </p>
             </div>
             <div>
-              <Carousel className={styles.appFooter}>
+              <img
+                src="./img/download.png"
+                alt=""
+                style={{
+                  position: "relative",
+                  width: "208px",
+                  height: "440px",
+                }}
+              />
+
+              <img
+                src="https://tcdtist-tix-clone.vercel.app/static/media/banner-slider-6.0b2b382d.jpg"
+                alt=""
+                style={{
+                  position: "absolute",
+                  width: "190px",
+                  height: "420px",
+                  marginLeft: "-200px",
+                  marginTop: "10px",
+                  borderRadius: "20px",
+                }}
+              />
+
+              {/* <Carousel className={styles.appFooter}>
                 <Carousel.Item>
                   <img
-                    src="https://cdn.tgdd.vn/GameApp/3/223698/Screentshots/tix-dat-ve-nhanh-nhat-01-05-2021-1.png"
+                    src="https://tcdtist-tix-clone.vercel.app/static/media/banner-slider-6.0b2b382d.jpg"
                     alt=""
+                    style={{
+                      width: "190px",
+                      height: "420px",
+                      marginLeft: "-200px",
+                      marginTop: "10px",
+                      borderRadius: "20px",
+                    }}
                   />
                 </Carousel.Item>
-                {/* <Carousel.Item>
-                  <img
-                    src="https://cdn.tgdd.vn/GameApp/2/223698/Screentshots/tix-dat-ve-nhanh-nhat-01-05-2021-0.png"
-                    alt=""
-                  />
-                </Carousel.Item> */}
+
                 <Carousel.Item>
                   <img
-                    src="https://cdn.tgdd.vn/GameApp/3/223698/Screentshots/tix-dat-ve-nhanh-nhat-01-05-2021-2.png"
+                    src="https://tcdtist-tix-clone.vercel.app/static/media/banner-slider-3.33a486d1.jpg"
                     alt=""
+                    style={{
+                      width: "190px",
+                      height: "420px",
+                      marginLeft: "-200px",
+                      marginTop: "10px",
+                      borderRadius: "20px",
+                    }}
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    src="https://cdn.tgdd.vn/GameApp/3/223698/Screentshots/tix-dat-ve-nhanh-nhat-01-05-2021-3.png"
+                    src="https://tcdtist-tix-clone.vercel.app/static/media/banner-slider-4.16bf933f.jpg"
                     alt=""
+                    style={{
+                      width: "190px",
+                      height: "420px",
+                      marginLeft: "-200px",
+                      marginTop: "10px",
+                      borderRadius: "20px",
+                    }}
                   />
                 </Carousel.Item>
-              </Carousel>
+              </Carousel> */}
             </div>
           </div>
         </div>
