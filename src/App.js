@@ -30,7 +30,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/movies/:movieId" element={<MovieDetails />} />
           <Route
-              path="/booking/:bookingId"
+              path="/booking/:maLichChieu"
               element={
                 <ProtectedRoute>
                   <Booking />

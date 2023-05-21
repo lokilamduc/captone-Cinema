@@ -1,41 +1,50 @@
-.cinemaTabPanel {
-    overflow-y: scroll;
-    width: "540px";
-    flex-grow: 1;
-    height: 580px;
-    
-   
-}
-    .container{
-        margin: 23px 0 50px 0;
-        margin-left: 10%;
-        margin-right: 10%;
-        width: 80%;
-        border: 1px solid  rgba(238,238,238,.88);
-        height: 580px;
-    }
+.wrapShowing{
+    // background: #000;
+    padding:30px 0;
 
-    .movie{
-        display: flex;
-        position: relative;
-        margin-bottom: 20px;
-
-    & ::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 38%;
-      height: 1px;
-      bottom: 0;
-      background: rgba(238,238,238,.88);
-      
-      
-        }}
-
-        .ungdung{
-            background: rebeccapurple;
-            background-size: contain;
-            padding: 120px 0 80px 0;
+    .showing{
+        border: 3px solid #fb633a;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #00000080;
+        .pagination{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.1rem;
+                gap: 5px;
+                margin: 2rem 0;
+                // list-style: none;
+            
+                .page__num {
+                    padding: 8px 15px;
+                    font-weight: 400;
+                    // width: 25px;
+                    // height: 25px;
+                    // line-height: 25px;
+                    // text-align: center;
+                    background-color: #fff;
+                    color: #fb633a;
+                    border-radius: 50%;
+                    border: 1px solid #fb633a;
+                    cursor: pointer;
+            
+                    &:hover{
+                        background-color: #fb633a;
+                        color: #fff;
+                        border-color: #fff;
+                    }
+            
+                }
+            
+                .paginate__active {
+                    background-color: #fb633a;
+                        color: #fff;
+                        border-color: #fff;
+                    }
+                
         }
+    }
+    }
 
         
