@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import userAPI from '../../../slices/userSlice'
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 
 function Signup() {
